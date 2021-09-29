@@ -1,14 +1,17 @@
 import express = require("express");
 
+import ScrapeController from '../../controllers/scrape.controller';
+
 const router = express.Router();
 
-// Fetch all
+// Trigger all
 router.get("/", async(req: express.Request, res: express.Response) => {
-    // Controller.fetchall
+    await ScrapeController.triggerAllCompanies(req, res);
 })
 
+// Trigger one
 router.get("/:companyId", async(req: express.Request, res: express.Response) => {
-    // Controller.fetchone
+    await ScrapeController.triggerOneCompany(req, res);
 })
 
 export = router;

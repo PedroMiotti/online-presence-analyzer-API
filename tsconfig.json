@@ -1,0 +1,27 @@
+{
+  "version": "4.1.3",
+  "compilerOptions": {
+    "lib": ["ES2020"],
+    "outDir": "build",
+    "rootDir": ".",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+    "sourceMap": true,
+    "target": "es6",
+    "moduleResolution": "node",
+    "module": "commonjs",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "resolveJsonModule": true,
+    "allowJs": true,
+    "checkJs": true,
+    "alwaysStrict": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
+  },
+
+  "exclude": ["./src/**/*.test.ts", "./src/**/*.mock.ts", "node_modules", "**/node_modules/*"],
+  "include": ["./src/**/*"]
+}
