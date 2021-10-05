@@ -10,7 +10,7 @@ router.get("/", async(req: express.Request, res: express.Response) => {
 })
 
 // Trigger one
-router.get("/:companyId", async(req: express.Request, res: express.Response) => {
+router.get("/:companyName", async(req: express.Request, res: express.Response) => {
     await ScrapeController.triggerOneCompany(req, res);
 })
 

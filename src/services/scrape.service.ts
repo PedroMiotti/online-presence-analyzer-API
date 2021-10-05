@@ -1,5 +1,5 @@
-import { IScrape } from "../routes/gateway/services/ports/IScrape";
-import { _scrapeClient } from "../routes/gateway/services/container";
+import { IScrape } from "../routes/gateway/ports/IScrape";
+import { _scrapeClient } from "../routes/gateway/container";
 
 export class ScrapeService {
     private readonly _scrapeClient: IScrape;
@@ -8,11 +8,12 @@ export class ScrapeService {
         this._scrapeClient = _scrapeClient;
     }
 
-    public async triggerOne(companyId: number){
-        await _scrapeClient.updateOne(companyId);
+    public async triggerOne(companyName: string){
+        return await _scrapeClient.updateOne(companyName);
     }
 
     public async triggerAll(){
-        await _scrapeClient.updateAll();
+        return await _scrapeClient.updateAll();
     }
+
 }
