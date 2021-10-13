@@ -1,14 +1,14 @@
-// MySQL
 import mysql = require("mysql");
-//Dotenv
+import dotenv = require('dotenv');
+dotenv.config();
 
-// MySQl
+
 export = class SqlPool {
     public static readonly pool = mysql.createPool({
         connectionLimit: 10,
-        host: process.env.DB_HOST,
-        user: process.env.DB_USER,
-        password: process.env.DB_PASSWD,
-        database: process.env.DB_NAME,
+        host: process.env.MYSQL_HOST,
+        user: process.env.MYSQL_USER,
+        password: process.env.MYSQL_PWD,
+        database: process.env.MYSQL_DB,
     });
 }

@@ -28,9 +28,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `scrape_tool`.`reclameaqui`
+-- Table `scrape_tool`.`record`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `scrape_tool`.`reclameaqui` (
+CREATE TABLE IF NOT EXISTS `scrape_tool`.`record` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `empresa_id` INT NULL,
   `reputacao_geral` VARCHAR(45) NULL,
@@ -40,6 +40,8 @@ CREATE TABLE IF NOT EXISTS `scrape_tool`.`reclameaqui` (
   `nota` VARCHAR(45) NULL,
   `n_respondidas` VARCHAR(45) NULL,
   `avaliadas` VARCHAR(45) NULL,
+  `indice_solucao` VARCHAR(45) NULL,
+  `voltaria_negocio` VARCHAR(45) NULL,
   `updated` TIMESTAMP NOT NULL DEFAULT NOW() ON UPDATE NOW(),
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;

@@ -1,4 +1,6 @@
 export type companyInfo = {
+    empresa_id: string,
+    nome_empresa: string,
     avaliadas: string,
     indice_solucao: string,
     n_respondidas: string,

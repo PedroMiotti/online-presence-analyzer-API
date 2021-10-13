@@ -1,5 +1,5 @@
 import express = require('express');
-import {  scrapeService} from '../services/container'
+import { scrapeService } from '../services/container'
 
 export default class ScrapeController {
 

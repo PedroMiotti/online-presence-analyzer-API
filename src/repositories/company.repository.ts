@@ -1,23 +1,17 @@
 import Sql = require("../infra/sql");
+import {ICompanyResult} from "@/routes/gateway/results/ICompanyResult";
 
-class CompanyRepository{
-    public id: number;
-    public name: string;
-    public avaliadas: string
-    public indice_solucao: string
-    public n_respondidas: string
-    public nota: string
-    public porcentagem_resp: string
-    public reclamacoes_total: string
-    public reputacao_geral: string
-    public respondidas_total: string
-    public voltaria_negocio: string
-
-
-    public static async updateOne(id: number): Promise<string>{
+export class CompanyRepository{
+    public static async insertOneRecordByCompanyId(company: ICompanyResult): Promise<void>{
         try{
-            await Sql.conectar(async (sql: Sql) => {
+            const { empresa_id, avaliadas, n_respondidas, nota, porcentagem_resp, respondidas_total, reclamacoes_total, reputacao_geral, voltaria_negocio, indice_solucao } = company.data.companies;
 
+            await Sql.conectar(async (sql: Sql) => {
+                await sql.query("INSERT INTO record " +
+                    "(empresa_id, reputacao_geral, reclamacoes_total, respondidas_total, porcentagem_resp, nota, n_respondidas, avaliadas, indice_solucao, voltaria_negocio) " +
+                    "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", [
+                    empresa_id, reputacao_geral, reclamacoes_total, respondidas_total, porcentagem_resp, nota, n_respondidas, avaliadas, indice_solucao, voltaria_negocio
+                ]);
             })
         }
         catch (e) {
@@ -27,4 +21,3 @@ class CompanyRepository{
 
 }
 
-export = CompanyRepository;
