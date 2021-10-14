@@ -11,15 +11,25 @@ export class ScrapeService {
     }
 
     public async triggerOne(companyName: string): Promise<ICompanyResult>{
-        const companyData: ICompanyResult = await _scrapeClient.updateOne(companyName);
+        try{
 
-        await CompanyRepository.insertOneRecordByCompanyId(companyData);
+            const companyData: ICompanyResult = await _scrapeClient.updateOne(companyName);
 
-        return companyData;
+            await CompanyRepository.insertOneRecordByCompanyId(companyData);
+
+            return companyData;
+        }catch (e) {
+            console.log(e);
+        }
+
     }
 
     public async triggerAll(): Promise<ICompanyResult>{
-        return await _scrapeClient.updateAll();
+        try{
+            return await _scrapeClient.updateAll();
+        }catch (e) {
+
+        }
     }
 
 }
