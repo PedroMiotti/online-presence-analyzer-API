@@ -8,13 +8,12 @@ export default class ScrapeController {
 
         const response = await scrapeService.triggerOne(companyName);
 
-        res.status(response.data.status).send(response.data.companies)
+        res.status(response.data.status).send(response.data)
     }
 
     public static async triggerAllCompanies(req: express.Request, res: express.Response){
         const response = await scrapeService.triggerAll();
 
-        res.status(response.data.status).send(response.data.companies)
-
+        res.status(response.data.status).send(response.data)
     }
 }

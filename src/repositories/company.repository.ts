@@ -1,13 +1,13 @@
 import Sql = require("../infra/sql");
-import { ICompanyResult } from "../routes/gateway/results/ICompanyResult";
+import {companyInfo, ICompanyResult} from "../routes/gateway/results/ICompanyResult";
 
 export class CompanyRepository {
-    public static async insertOneRecordByCompanyId(company: ICompanyResult): Promise<void> {
+    public static async insertOneCompanyRecord(company: companyInfo): Promise<void> {
         try {
             const {
                 empresa_id, avaliadas, n_respondidas, nota, porcentagem_resp, respondidas_total, reclamacoes_total,
                 reputacao_geral, voltaria_negocio, indice_solucao
-            } = company.data.companies;
+            } = company;
 
             await Sql.conectar(async (sql: Sql) => {
                 await sql.query("INSERT INTO record " +
@@ -20,8 +20,6 @@ export class CompanyRepository {
             console.log(e);
         }
     }
-
-
 
 }
 

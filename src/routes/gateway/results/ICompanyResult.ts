@@ -12,9 +12,10 @@ export type companyInfo = {
     voltaria_negocio: string
 }
 
+
 export interface ICompanyResult {
     data: {
-        companies: companyInfo,
+        companies: companyInfo[],
         message: string,
         status: number
     }

@@ -15,7 +15,7 @@ export class ScrapeService {
 
             const companyData: ICompanyResult = await _scrapeClient.updateOne(companyName);
 
-            await CompanyRepository.insertOneRecordByCompanyId(companyData);
+            await CompanyRepository.insertOneCompanyRecord(companyData.data.companies[0]); // !Error --> Returns an error when [0]
 
             return companyData;
         }catch (e) {
@@ -26,9 +26,17 @@ export class ScrapeService {
 
     public async triggerAll(): Promise<ICompanyResult>{
         try{
-            return await _scrapeClient.updateAll();
-        }catch (e) {
+            const companiesData: ICompanyResult = await _scrapeClient.updateAll();
 
+
+            for (const company of companiesData.data.companies) {
+                await CompanyRepository.insertOneCompanyRecord(company); // !Error --> Inserting a null row on the DB
+            }
+
+            return companiesData;
+
+        }catch (e) {
+            console.log(e);
         }
     }
 
