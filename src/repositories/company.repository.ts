@@ -21,5 +21,36 @@ export class CompanyRepository {
         }
     }
 
+    public static async getCompanyRecordById(companyId: number): Promise<any[]>{
+        try{
+            let companyRecords: any[];
+
+            await Sql.conectar(async (sql: Sql) => {
+                companyRecords = await sql.query("SELECT * FROM record WHERE empresa_id = ? ", [companyId]);
+
+            })
+
+            return companyRecords;
+
+        }catch (e) {
+            console.log(e);
+        }
+    }
+
+    public static async getCompaniesRecords(): Promise<any[]>{
+        try{
+            let companiesRecords: any[];
+
+            await Sql.conectar(async (sql: Sql) => {
+                companiesRecords = await sql.query("SELECT * FROM record", []);
+            })
+
+            return companiesRecords;
+
+        }catch (e) {
+            console.log(e);
+        }
+    }
+
 }
 
