@@ -42,7 +42,7 @@ export class CompanyRepository {
             let companiesRecords: any[];
 
             await Sql.conectar(async (sql: Sql) => {
-                companiesRecords = await sql.query("SELECT * FROM record", []);
+                companiesRecords = await sql.query("SELECT r.*, e.empresa_nome, e.empresa_color FROM record r INNER JOIN empresa e ON e.empresa_id = r.empresa_id;", []);
             })
 
             return companiesRecords;
