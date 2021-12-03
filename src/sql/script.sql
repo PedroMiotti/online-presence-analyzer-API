@@ -23,6 +23,7 @@ USE `scrape_tool` ;
 CREATE TABLE IF NOT EXISTS `scrape_tool`.`empresa` (
   `empresa_id` INT NOT NULL,
   `empresa_nome` VARCHAR(45) NULL,
+  `empresa_color` VARCHAR(45) NULL,
   PRIMARY KEY (`empresa_id`))
 ENGINE = InnoDB;
 
@@ -58,3 +59,10 @@ INSERT INTO scrape_tool.empresa (empresa_id, empresa_nome) VALUES(3, "Correios")
 INSERT INTO scrape_tool.empresa (empresa_id, empresa_nome) VALUES(4, "Magazine Luiza");
 INSERT INTO scrape_tool.empresa (empresa_id, empresa_nome) VALUES(5, "Nubank");
 INSERT INTO scrape_tool.empresa (empresa_id, empresa_nome) VALUES(6, "Mercado Livre");
+
+UPDATE `scrape_tool`.`empresa` SET `empresa_color` = '#21c25e' WHERE (`empresa_id` = '1');
+UPDATE `scrape_tool`.`empresa` SET `empresa_color` = '#ea1d2c' WHERE (`empresa_id` = '2');
+UPDATE `scrape_tool`.`empresa` SET `empresa_color` = '#fed525' WHERE (`empresa_id` = '3');
+UPDATE `scrape_tool`.`empresa` SET `empresa_color` = '#0e89ff' WHERE (`empresa_id` = '4');
+UPDATE `scrape_tool`.`empresa` SET `empresa_color` = '#820ad1' WHERE (`empresa_id` = '5');
+UPDATE `scrape_tool`.`empresa` SET `empresa_color` = '#fee600' WHERE (`empresa_id` = '6');
